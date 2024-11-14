@@ -31,6 +31,7 @@ export default class MultiSlider extends React.Component {
       borderRadius: 15,
       slipDisplacement: 200,
     },
+    customTrack: undefined,
     customMarker: DefaultMarker,
     customMarkerLeft: DefaultMarker,
     customMarkerRight: DefaultMarker,
@@ -545,17 +546,30 @@ export default class MultiSlider extends React.Component {
       });
     }
 
+    const CustomTrack = this.props.customTrack;
+
     const body = (
       <React.Fragment>
         <View style={[styles.fullTrack, { width: sliderLength }]}>
-          <View
-            style={[
-              styles.track,
-              trackOneStyle,
-              this.props.trackStyle,
-              { width: trackOneLength },
-            ]}
-          />
+          {CustomTrack ? (<CustomTrack>
+            <View
+                style={[
+                  styles.track,
+                  trackOneStyle,
+                  this.props.trackStyle,
+                  { width: trackOneLength },
+                ]}
+            />
+          </CustomTrack>) : (
+            <View
+              style={[
+                styles.track,
+                trackOneStyle,
+                this.props.trackStyle,
+                { width: trackOneLength },
+              ]}
+            />)
+          }
           <View
             style={[
               styles.track,

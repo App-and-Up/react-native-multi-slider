@@ -50,6 +50,7 @@ export interface MultiSliderProps {
         slipDisplacement: number;
     };
 
+    customTrack?: React.ComponentType;
     customMarker?: React.ComponentType<MarkerProps>;
     customMarkerLeft?: React.ComponentType<MarkerProps>;
     customMarkerRight?: React.ComponentType<MarkerProps>;
