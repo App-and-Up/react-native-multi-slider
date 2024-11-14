@@ -551,7 +551,7 @@ export default class MultiSlider extends React.Component {
     const body = (
       <React.Fragment>
         <View style={[styles.fullTrack, { width: sliderLength }]}>
-          {CustomTrack ? (<CustomTrack>
+          {!twoMarkers && CustomTrack ? (<CustomTrack>
             <View
                 style={[
                   styles.track,
@@ -570,15 +570,27 @@ export default class MultiSlider extends React.Component {
               ]}
             />)
           }
-          <View
-            style={[
-              styles.track,
-              trackTwoStyle,
-              this.props.trackStyle,
-              { width: trackTwoLength },
-            ]}
-            {...(twoMarkers ? this._panResponderBetween.panHandlers : {})}
-          />
+          {twoMarkers && CustomTrack ? (<CustomTrack>
+            <View
+                style={[
+                  styles.track,
+                  trackTwoStyle,
+                  this.props.trackStyle,
+                  { width: trackTwoLength },
+                ]}
+                {...(twoMarkers ? this._panResponderBetween.panHandlers : {})}
+            />
+          </CustomTrack>) : (
+              <View
+                  style={[
+                    styles.track,
+                    trackTwoStyle,
+                    this.props.trackStyle,
+                    { width: trackTwoLength },
+                  ]}
+                  {...(twoMarkers ? this._panResponderBetween.panHandlers : {})}
+              />
+          )}
           {twoMarkers && (
             <View
               style={[
